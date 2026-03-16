@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Imsakiyah & Kalender Dinamis</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="theme-default" id="app-body">
+    <div class="bg-decor" id="bg-decor" aria-hidden="true"></div>
+
+    <div class="app-container">
+        <header class="app-header">
+            <div class="hijri-title" id="hijri-title"></div>
+            <h1 id="main-title">Memuat Kalender...</h1>
+            <div class="subtitle" id="sub-title">MEMUAT DATA...</div>
+
+            <div class="badge-container">
+                <div class="location-badge">
+                    <span class="icon">📍</span>
+                    <span>Padalarang, Kab. Bandung Barat | WIB (UTC+7)</span>
+                </div>
+            </div>
+
+            <div class="clock-container">
+                <span id="real-time-clock">--:--:-- WIB</span>
+            </div>
+
+            <div class="prayer-legend">
+                <span class="legend-item"><span class="dot dot-imsak"></span> Imsak</span>
+                <span class="legend-item"><span class="dot dot-subuh"></span> Subuh</span>
+                <span class="legend-item"><span class="dot dot-terbit"></span> Terbit</span>
+                <span class="legend-item"><span class="dot dot-duha"></span> Duha</span>
+                <span class="legend-item"><span class="dot dot-zuhur"></span> Zuhur</span>
+                <span class="legend-item"><span class="dot dot-asar"></span> Asar</span>
+                <span class="legend-item"><span class="dot dot-maghrib"></span> Magrib</span>
+                <span class="legend-item"><span class="dot dot-isya"></span> Isya</span>
+            </div>
+        </header>
+
+        <main class="table-container">
+            <table id="prayer-table">
+                <thead>
+                    <tr>
+                        <th>KE-</th>
+                        <th>TANGGAL</th>
+                        <th>IMSAK</th>
+                        <th>SUBUH</th>
+                        <th>TERBIT</th>
+                        <th>DUHA</th>
+                        <th>ZUHUR</th>
+                        <th>ASAR</th>
+                        <th>MAGHRIB</th>
+                        <th>ISYA</th>
+                    </tr>
+                </thead>
+                <tbody id="prayer-tbody">
+                    <tr>
+                        <td colspan="10" class="loading-state">Memuat jadwal real-time dari API...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <footer class="app-footer">
+            <p>
+                &copy; <span id="current-year"></span> 
+                <span class="separator">·</span> 
+                <span class="highlight" id="footer-greeting">Ramadan Mubarak</span> 
+                <span class="separator">·</span> 
+                <span id="footer-message">Semoga ibadah kita diterima Allah SWT</span>
+            </p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
