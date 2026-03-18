@@ -29,19 +29,33 @@ project/
 │
 
 ├── index.html
+
 │
+
 ├── css/
+
 │   ├── main.css
+
 │   ├── layout.css
+
 │   ├── table.css
+
 │   ├── themes.css
+
 │   └── animations.css
+
 │
+
 └── js/
+
     ├── app.js
+    
     ├── calendar.js
+    
     ├── prayerTimes.js
+    
     ├── clock.js
+    
     └── themeManager.js
 
 **FILE / MODULE EXPLANATION**
