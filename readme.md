@@ -30,8 +30,6 @@ project/
 
 ├── index.html
 
-│
-
 ├── css/
 
 │   ├── main.css
@@ -43,8 +41,6 @@ project/
 │   ├── themes.css
 
 │   └── animations.css
-
-│
 
 └── js/
 
