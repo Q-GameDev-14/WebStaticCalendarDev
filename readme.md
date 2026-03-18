@@ -25,6 +25,7 @@ Tujuan utama pembuatan proyek ini adalah menyediakan jadwal waktu sholat yang ak
 **PROJECT STRUCTURE**
 
 project/
+
 │
 ├── index.html
 │
