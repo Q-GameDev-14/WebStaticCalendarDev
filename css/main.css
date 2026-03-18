@@ -1,0 +1,113 @@
+/* css/main.css */
+
+/* ==========================================================================
+   1. CSS Reset & Base
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* ==========================================================================
+   2. Global Design Tokens (CSS Variables)
+   ========================================================================== */
+:root {
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-secondary: 'Amiri', serif;
+
+    /* Default Theme Colors (Modern Dark Navy / Tech UI) */
+    --bg-main: #090e17; 
+    --bg-surface: #111827;
+    --bg-surface-hover: #1f2937;
+    --bg-surface-active: rgba(255, 255, 255, 0.03);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+    
+    --accent-color: #38bdf8; /* Default tech blue, will change in Ramadhan theme */
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-color-light: rgba(255, 255, 255, 0.1);
+
+    /* Prayer Times Legend Colors (Default) */
+    --color-imsak: #94a3b8;
+    --color-subuh: #60a5fa;
+    --color-terbit: #fde047;
+    --color-duha: #fbbf24;
+    --color-zuhur: #f87171;
+    --color-asar: #c084fc;
+    --color-maghrib: #fb923c;
+    --color-isya: #818cf8;
+
+    /* Transitions & Animations */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Layout & Spacing */
+    --container-width: 1000px;
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 24px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-glow: 0 0 20px var(--accent-glow);
+}
+
+/* ==========================================================================
+   3. Global Typography & Body Styles
+   ========================================================================== */
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Smooth transition when theme changes */
+    transition: background-color var(--transition-slow), color var(--transition-slow);
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   4. Utility Classes & Custom Scrollbar
+   ========================================================================== */
+.highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+    transition: color var(--transition-normal);
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}

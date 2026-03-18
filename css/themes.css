@@ -1,0 +1,588 @@
+/* css/themes.css */
+
+/* ==========================================================================
+   1. Theme: Default (Tech / Modern Dark Navy)
+   ========================================================================== */
+/* Variabel warna dasar sudah ada di main.css. 
+   Di sini kita hanya menambahkan efek dekorasi background. */
+.theme-default #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Gradient subtle khas website teknologi / cloud */
+    background: radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.03), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.04), transparent 25%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   2. Theme: Ramadhan (Priority Event)
+   ========================================================================== */
+.theme-ramadhan {
+    --bg-main: #0a1118; /* Biru malam yang sangat gelap */
+    --bg-surface: #141f2d;
+    --bg-surface-hover: #1c2a3d;
+    
+    --accent-color: #e6c875; /* Emas premium / Pale Gold */
+    --accent-glow: rgba(230, 200, 117, 0.15);
+    
+    --text-muted: #8b9bb4;
+    --text-locate: #e8c97a;
+}
+
+/* Dekorasi Background: Bulan Sabit & Bintang via CSS */
+.theme-ramadhan #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    /* Membuat pola rasi bintang buatan dengan radial-gradient */
+    background-image: 
+        radial-gradient(1px 1px at 10% 10%, #fff 100%, transparent),
+        radial-gradient(1.5px 1.5px at 20% 30%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 80% 15%, #fff 100%, transparent),
+        radial-gradient(2px 2px at 70% 45%, #fff 100%, transparent),
+        radial-gradient(1px 1px at 40% 60%, #fff 100%, transparent),
+        radial-gradient(1.5px 1.5px at 90% 80%, #fff 100%, transparent);
+    opacity: 0.6;
+}
+
+/* Membuat efek Bulan Sabit (Crescent Moon) murni dengan CSS Box-Shadow */
+.theme-ramadhan #bg-decor::before {
+    content: '';
+    position: fixed;
+    top: 5%;
+    right: 8%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 14px -4px 0 2px var(#e8c97a);
+    
+    /* Menerapkan animasi float & bloom: durasi 5 detik, bolak-balik terus menerus */
+    animation: moonFloatAndBloom 5s ease-in-out infinite;
+}
+
+/* Memperkuat efek glow pada teks khusus di tema Ramadhan */
+.theme-ramadhan .hijri-title {
+    text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.theme-ramadhan .row-today {
+    background: rgba(201, 168, 76, 0.1);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.theme-ramadhan .row-today .day-number-badge {
+    color: #452e00; /* Warna teks gelap agar kontras dengan badge emas */
+}
+
+/* ==========================================================================
+   Animasi Khusus Tema Ramadhan
+   ========================================================================== */
+
+/* Keyframes untuk efek mengambang (float) dan pendaran (bloom) */
+@keyframes moonFloatAndBloom {
+    0%, 100% {
+        transform: rotate(-15deg) translateY(0px);
+        /* Glow normal */
+        filter: drop-shadow(0 0 15px rgba(230, 200, 117, 0.2)) drop-shadow(0 0 30px rgba(230, 200, 117, 0.1));
+    }
+    50% {
+        transform: rotate(-15deg) translateY(-12px); /* Bergerak naik 12px */
+        /* Glow membesar (Bloom) saat bulan di atas */
+        filter: drop-shadow(0 0 25px rgba(230, 200, 117, 0.5)) drop-shadow(0 0 50px rgba(230, 200, 117, 0.3));
+    }
+}
+
+/* ==========================================================================
+   3. Theme: Natal (Event based: 23-27 Desember)
+   ========================================================================== */
+.theme-natal {
+    /* Override warna untuk nuansa Natal (Dark Red/Green tint) */
+    --bg-main: #0a0505; 
+    --bg-surface: #140a0a;
+    --bg-surface-hover: #1f0f0f;
+    
+    --accent-color: #ef4444; /* Merah Natal */
+    --accent-glow: rgba(239, 68, 68, 0.15);
+}
+
+/* Dekorasi Background: Efek Salju Sederhana */
+.theme-natal #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(2px 2px at 15% 15%, rgba(255,255,255,0.8) 100%, transparent),
+        radial-gradient(3px 3px at 35% 45%, rgba(255,255,255,0.6) 100%, transparent),
+        radial-gradient(2px 2px at 65% 25%, rgba(255,255,255,0.7) 100%, transparent),
+        radial-gradient(4px 4px at 85% 75%, rgba(255,255,255,0.5) 100%, transparent);
+    opacity: 0.4;
+}
+
+
+/* ==========================================================================
+   Override Khusus Komponen UI Tema Ramadhan
+   ========================================================================== */
+
+/* 1. Style Judul Utama (Menggunakan font serif & warna emas) */
+.theme-ramadhan #main-title {
+    font-family: var(--font-secondary); 
+    color: var(--accent-color);
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+/* 2. Style Location Badge (Background transparan & border emas tipis) */
+.theme-ramadhan .location-badge {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    color: var(--text-locate);
+}
+
+/* Mengubah warna icon pin menjadi merah/pink soft seperti di referensi */
+.theme-ramadhan .location-badge .icon {
+    color: #e15b64; 
+}
+
+/* 3. Style Judul Kolom Tabel (Warna emas & tanpa background abu-abu) */
+.theme-ramadhan thead {
+    /* Background sangat gelap agar kontras dengan baris tabel di bawahnya */
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.14), rgba(45, 125, 147, 0.14));
+    border-bottom: 2px solid rgba(230, 200, 117, 0.15); /* Garis batas emas yang subtle */
+}
+
+.theme-ramadhan th {
+    color: var(--accent-color); /* Warna emas */
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.theme-ramadhan tbody tr {
+    background-color: rgba(9, 21, 36)
+}
+
+/* Hover effect pada baris tabel dengan nuansa emas */
+.theme-ramadhan tbody tr:hover {
+    background-color: rgba(230, 200, 117, 0.05); 
+}
+
+/* 4. Perbaikan Bentuk Bulan Sabit (Lebih besar, tajam, dan elegan) */
+.theme-ramadhan #bg-decor::before {
+    width: 80px;
+    height: 80px;
+    /* Menggeser bayangan agar bentuk sabitnya pas seperti gambar 1 */
+    box-shadow: 18px 15px 0 0 var(--accent-color); 
+    filter: drop-shadow(0 0 15px var(--accent-glow));
+    top: 5%;
+    right: 5%;
+}
+
+/* ==========================================================================
+   Theme: Imlek / Chinese New Year (Event-based)
+   ========================================================================== */
+.theme-imlek {
+    --bg-main: #1f0505; /* Merah Maroon sangat gelap untuk background */
+    --bg-surface: #330808; /* Merah Ruby gelap untuk tabel */
+    --bg-surface-hover: #4a0c0c;
+    
+    --accent-color: #fbbf24; /* Emas Menyala */
+    --accent-glow: rgba(251, 191, 36, 0.25);
+    
+    --text-primary: #fef3c7; /* Kuning pucat elegan */
+    --text-secondary: #fde68a;
+    --text-muted: #d97706; /* Emas gelap */
+}
+
+/* Dekorasi Background: Efek Cahaya Merah & Emas */
+.theme-imlek #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle at 15% -10%, rgba(220, 38, 38, 0.2), transparent 40%),
+        radial-gradient(circle at 85% -10%, rgba(220, 38, 38, 0.2), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(251, 191, 36, 0.05), transparent 50%);
+}
+
+/* Animasi Cahaya Lampion Mengambang */
+@keyframes lanternGlow {
+    0%, 100% { filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.6)); transform: translateY(0); }
+    50% { filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.5)); transform: translateY(-8px); }
+}
+
+/* Lampion Kiri & Kanan murni dengan CSS */
+.theme-imlek #bg-decor::before,
+.theme-imlek #bg-decor::after {
+    content: '';
+    position: fixed;
+    top: -15px;
+    width: 45px;
+    height: 65px;
+    /* Gradien untuk body lampion */
+    background: radial-gradient(ellipse at center, #ef4444 0%, #991b1b 100%);
+    border-radius: 20px;
+    animation: lanternGlow 4s ease-in-out infinite;
+    /* Box-shadow digunakan untuk membuat "Tali Gantungan" dan "Rumbai Bawah" warna emas */
+    box-shadow: 0 -30px 0 -21px #fbbf24, 0 30px 0 -20px #fbbf24; 
+}
+
+.theme-imlek #bg-decor::before {
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.theme-imlek #bg-decor::after {
+    right: 8%;
+    animation-delay: 2s; /* Delay agar lampion bergerak asinkron (bergantian) */
+}
+
+/* Override Spesifik Komponen Tabel & Header */
+.theme-imlek #main-title {
+    color: var(--accent-color);
+    font-family: var(--font-secondary);
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.theme-imlek thead {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.theme-imlek th {
+    color: var(--accent-color);
+}
+
+.theme-imlek tbody tr {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.theme-imlek tbody tr:hover {
+    background-color: rgba(251, 191, 36, 0.1);
+}
+
+.theme-imlek .location-badge {
+    background-color: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: var(--text-secondary);
+}
+
+/* Highlight badge tanggal hari ini jadi Merah Khas Angpao */
+.theme-imlek .row-today .day-number-badge {
+    background-color: #ef4444;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+/* ==========================================================================
+   Theme: Valentine's Day (Event-based: 12-16 Feb)
+   ========================================================================== */
+.theme-valentine {
+    /* Latar belakang merah anggur (burgundy) gelap agar teks tetap terbaca */
+    --bg-main: #2a0a18; 
+    --bg-surface: #3d0f24;
+    --bg-surface-hover: #521532;
+    
+    /* Aksen Pink Manis khas Valentine */
+    --accent-color: #ff7597; 
+    --accent-glow: rgba(255, 117, 151, 0.3);
+    
+    --text-primary: #fff0f5; /* Lavender blush / putih kemerahan */
+    --text-secondary: #ffb6c1; /* Light pink */
+    --text-muted: #d87093;
+}
+
+/* Dekorasi Background: Efek Cahaya Soft Pink */
+.theme-valentine #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: 
+        radial-gradient(circle at 15% 20%, rgba(255, 117, 151, 0.08), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(255, 192, 203, 0.08), transparent 40%);
+}
+
+/* Animasi Hati Mengambang seperti Balon Helium */
+@keyframes floatingHearts {
+    0% { 
+        transform: translateY(110vh) scale(0.6) rotate(-15deg); 
+        opacity: 0; 
+    }
+    10% { opacity: 0.6; }
+    80% { opacity: 0.4; }
+    100% { 
+        transform: translateY(-10vh) scale(1.2) rotate(15deg); 
+        opacity: 0; 
+    }
+}
+
+/* Menggunakan symbol hati HTML murni (tanpa gambar) */
+.theme-valentine #bg-decor::before,
+.theme-valentine #bg-decor::after {
+    content: '❤';
+    position: fixed;
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 15px var(--accent-glow));
+    bottom: -50px;
+    animation: floatingHearts 7s ease-in infinite;
+}
+
+.theme-valentine #bg-decor::before {
+    left: 15%;
+    font-size: 2.5rem;
+    animation-duration: 8s;
+    animation-delay: 1s;
+}
+
+.theme-valentine #bg-decor::after {
+    right: 20%;
+    font-size: 3.5rem; /* Ukuran berbeda agar terlihat natural */
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+/* Override Spesifik Komponen Tabel & Header */
+.theme-valentine #main-title {
+    color: var(--accent-color);
+    font-family: var(--font-secondary);
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.theme-valentine thead {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(255, 117, 151, 0.3);
+}
+
+.theme-valentine th {
+    color: var(--accent-color);
+}
+
+.theme-valentine tbody tr {
+    background-color: rgba(255, 117, 151, 0.02);
+}
+
+.theme-valentine tbody tr:hover {
+    background-color: rgba(255, 117, 151, 0.08);
+}
+
+.theme-valentine .location-badge {
+    background-color: rgba(61, 15, 36, 0.5);
+    border: 1px solid rgba(255, 117, 151, 0.3);
+    color: var(--text-secondary);
+}
+
+/* Highlight badge tanggal hari ini jadi Pink Menyala */
+.theme-valentine .row-today .day-number-badge {
+    background-color: #ff4d6d;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+}
+
+/* ==========================================================================
+   Theme: Idul Adha (Event-based: 9 - 13 Dzulhijjah)
+   ========================================================================== */
+.theme-idul-adha {
+    /* Latar belakang Hijau Zamrud yang sangat pekat dan elegan */
+    --bg-main: #022c22; 
+    --bg-surface: #064e3b;
+    --bg-surface-hover: #065f46;
+    
+    /* Emas yang kaya dan terang */
+    --accent-color: #fbbf24; 
+    --accent-glow: rgba(251, 191, 36, 0.25);
+    
+    --text-primary: #ecfdf5; /* Putih dengan hint hijau mint */
+    --text-secondary: #a7f3d0;
+    --text-muted: #6ee7b7;
+}
+
+/* Dekorasi Background: Efek Aurora Hijau dan Bintang Malam */
+.theme-idul-adha #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    /* Membuat semacam pendaran cahaya (aurora) hijau di sudut-sudut */
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.1), transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(52, 211, 153, 0.05), transparent 50%);
+}
+
+/* Membuat bintang-bintang kecil yang berkedip tenang */
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+.theme-idul-adha #bg-decor::before,
+.theme-idul-adha #bg-decor::after {
+    content: '✦'; /* Simbol bintang empat sudut yang elegan */
+    position: fixed;
+    color: var(--accent-color);
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+    animation: starTwinkle 4s ease-in-out infinite;
+}
+
+.theme-idul-adha #bg-decor::before {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.theme-idul-adha #bg-decor::after {
+    top: 25%;
+    right: 15%;
+    font-size: 1.5rem;
+    animation-delay: 2s;
+}
+
+/* Override Spesifik Komponen Tabel & Header */
+.theme-idul-adha #main-title {
+    color: var(--accent-color);
+    font-family: var(--font-secondary);
+    letter-spacing: 2px;
+}
+
+.theme-idul-adha thead {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.theme-idul-adha th {
+    color: var(--accent-color);
+}
+
+.theme-idul-adha tbody tr {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.theme-idul-adha tbody tr:hover {
+    background-color: rgba(251, 191, 36, 0.1);
+}
+
+.theme-idul-adha .location-badge {
+    background-color: rgba(2, 44, 34, 0.6);
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    color: var(--text-secondary);
+}
+
+/* Highlight badge tanggal hari ini jadi Emas Solid dengan teks Hijau Gelap */
+.theme-idul-adha .row-today .day-number-badge {
+    background-color: var(--accent-color);
+    color: #022c22;
+    font-weight: 800;
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+}
+
+/* ==========================================================================
+   Theme: New Year (Event-based: 31 Des - 2 Jan)
+   ========================================================================== */
+.theme-new-year {
+    /* Malam pergantian tahun yang sangat gelap */
+    --bg-main: #02020a; 
+    --bg-surface: #0a0a1f;
+    --bg-surface-hover: #131333;
+    
+    /* Emas dan Perak Kembang Api */
+    --accent-color: #fcd34d; /* Emas terang */
+    --accent-glow: rgba(252, 211, 77, 0.3);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+}
+
+/* Dekorasi Background: Langit Malam */
+.theme-new-year #bg-decor {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 100%, rgba(252, 211, 77, 0.05), transparent 60%);
+}
+
+/* Animasi Kembang Api (Fireworks Burst) murni dengan CSS */
+@keyframes fireworkBurst {
+    0% { 
+        transform: scale(0); 
+        opacity: 1; 
+        box-shadow: 0 0 0 0 #fcd34d, 0 0 0 0 #38bdf8, 0 0 0 0 #f472b6; 
+    }
+    100% { 
+        transform: scale(1.5); 
+        opacity: 0; 
+        /* Pancaran kembang api ke 4 arah dengan warna warni (Emas, Biru, Pink) */
+        box-shadow: 0 -80px 0 -5px #fcd34d, 
+                    80px 0 0 -5px #38bdf8, 
+                    0 80px 0 -5px #f472b6, 
+                    -80px 0 0 -5px #fcd34d,
+                    60px -60px 0 -8px #fff,
+                    -60px -60px 0 -8px #fff; 
+    }
+}
+
+.theme-new-year #bg-decor::before,
+.theme-new-year #bg-decor::after {
+    content: '';
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    animation: fireworkBurst 3s ease-out infinite;
+}
+
+.theme-new-year #bg-decor::before {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.theme-new-year #bg-decor::after {
+    top: 15%;
+    right: 20%;
+    animation-delay: 1.5s; /* Kembang api meledak bergantian */
+}
+
+/* Override Spesifik Komponen Tabel & Header */
+.theme-new-year #main-title {
+    color: var(--accent-color);
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.theme-new-year thead {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid rgba(252, 211, 77, 0.4);
+}
+
+.theme-new-year th {
+    color: var(--accent-color);
+}
+
+.theme-new-year tbody tr {
+    background-color: transparent;
+}
+
+.theme-new-year tbody tr:hover {
+    background-color: rgba(252, 211, 77, 0.08);
+}
+
+.theme-new-year .location-badge {
+    background-color: rgba(10, 10, 31, 0.8);
+    border: 1px solid rgba(252, 211, 77, 0.5);
+    color: #e2e8f0;
+}
+
+.theme-new-year .row-today .day-number-badge {
+    background-color: var(--accent-color);
+    color: #000;
+    font-weight: 800;
+    box-shadow: 0 0 20px rgba(252, 211, 77, 0.8);
+}

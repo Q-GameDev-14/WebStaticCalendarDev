@@ -1,0 +1,90 @@
+/* css/animations.css */
+
+/* ==========================================================================
+   1. Initial Page Load Animation
+   ========================================================================== */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(15px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.app-container {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   2. Table Rows Staggered Animation (Slide In)
+   ========================================================================== */
+@keyframes slideInRow {
+    from { 
+        opacity: 0; 
+        transform: translateX(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+/* Base state sebelum di-animate oleh JS */
+tbody tr {
+    opacity: 0; 
+    animation: slideInRow 0.4s ease-out forwards;
+}
+
+/* Catatan: Karena kita menggunakan JS untuk me-render 30 baris secara dinamis, 
+   kita akan memberikan animation-delay melalui inline-style di JavaScript 
+   agar efek berurutan (staggered) berjalan mulus tanpa harus menulis 
+   nth-child 1 sampai 30 di CSS ini.
+*/
+
+/* ==========================================================================
+   3. Hover Interactions
+   ========================================================================== */
+tbody tr {
+    transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+tbody tr:hover {
+    transform: scale(1.005);
+    z-index: 5;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   4. Pulse Animation untuk Badge "Hari Ini"
+   ========================================================================== */
+@keyframes pulseGlow {
+    0% { 
+        box-shadow: 0 0 0 0 var(--accent-glow); 
+    }
+    70% { 
+        box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); 
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); 
+    }
+}
+
+.row-today .day-number-badge {
+    animation: pulseGlow 2s infinite;
+}
+
+/* ==========================================================================
+   5. Loading State Pulse
+   ========================================================================== */
+@keyframes textPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading-state {
+    animation: textPulse 1.5s ease-in-out infinite;
+}

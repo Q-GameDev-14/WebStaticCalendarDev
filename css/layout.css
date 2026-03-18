@@ -1,0 +1,291 @@
+/* css/layout.css */
+
+/* ==========================================================================
+   1. Main Layout & Container
+   ========================================================================== */
+.app-container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. Header Section
+   ========================================================================== */
+.app-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.hijri-title {
+    font-family: var(--font-secondary); /* Font Arabic/Serif untuk kesan premium */
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    direction: rtl; /* Untuk teks Arab nantinya */
+    transition: color var(--transition-normal);
+}
+
+#main-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   3. Location Badge & Clock
+   ========================================================================== */
+.badge-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.location-badge .icon {
+    color: var(--accent-color);
+}
+
+.clock-container {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#real-time-clock {
+    font-family: var(--font-primary);
+    font-variant-numeric: tabular-nums; /* Mencegah jam bergeser saat angka berubah */
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background-color: var(--bg-surface-active);
+    padding: 0.35rem 1rem;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-color-light);
+}
+
+/* ==========================================================================
+   4. Prayer Times Legend
+   ========================================================================== */
+.prayer-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(9, 21, 36);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    width: 100%;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Mapping warna dot dari main.css */
+.dot-imsak { background-color: var(--color-imsak); box-shadow: 0 0 5px var(--color-imsak); }
+.dot-subuh { background-color: var(--color-subuh); box-shadow: 0 0 5px var(--color-subuh); }
+.dot-terbit { background-color: var(--color-terbit); box-shadow: 0 0 5px var(--color-terbit); }
+.dot-duha { background-color: var(--color-duha); box-shadow: 0 0 5px var(--color-duha); }
+.dot-zuhur { background-color: var(--color-zuhur); box-shadow: 0 0 5px var(--color-zuhur); }
+.dot-asar { background-color: var(--color-asar); box-shadow: 0 0 5px var(--color-asar); }
+.dot-maghrib { background-color: var(--color-maghrib); box-shadow: 0 0 5px var(--color-maghrib); }
+.dot-isya { background-color: var(--color-isya); box-shadow: 0 0 5px var(--color-isya); }
+
+/* ==========================================================================
+   5. Footer Section
+   ========================================================================== */
+.table-container {
+    flex-grow: 1; /* Memastikan footer selalu di bawah meskipun konten sedikit */
+}
+
+.app-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.app-footer .separator {
+    margin: 0 0.5rem;
+    color: var(--border-color-light);
+}
+
+/* ==========================================================================
+   6. Responsive Design (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 2rem 1rem;
+    }
+
+    #main-title {
+        font-size: 1.75rem;
+    }
+
+    .hijri-title {
+        font-size: 1.5rem;
+    }
+
+    .prayer-legend {
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    .legend-item {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .location-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .prayer-legend {
+        justify-content: flex-start;
+        padding: 1rem;
+    }
+}
+
+/* ==========================================================================
+   7. Holiday & Event Section (Tanggal Merah)
+   ========================================================================== */
+.holiday-container {
+    margin-top: 2rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg); /* Mengikuti lengkungan tabel */
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.holiday-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.holiday-icon {
+    font-size: 1.25rem;
+}
+
+.holiday-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+}
+
+.holiday-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.holiday-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.25rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: var(--border-radius-sm);
+    border-left: 3px solid var(--accent-color); /* Garis aksen di sebelah kiri */
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.holiday-item:hover {
+    background-color: var(--bg-surface-hover);
+    transform: translateX(4px); /* Efek geser sedikit saat di-hover */
+}
+
+.holiday-date {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.holiday-name {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-align: right;
+    font-weight: 500;
+}
+
+.holiday-empty {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: var(--border-radius-sm);
+}
+
+/* Penyesuaian untuk layar HP */
+@media (max-width: 480px) {
+    .holiday-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+    .holiday-name {
+        text-align: left;
+    }
+}

@@ -1,0 +1,147 @@
+/* css/table.css */
+
+/* ==========================================================================
+   1. Table Container & Responsive Wrapper
+   ========================================================================== */
+.table-container {
+    width: 100%;
+    background-color: var(--bg-surface);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    overflow: hidden; /* Mencegah border radius rusak oleh child element */
+    position: relative;
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+/* Wrapper untuk scrolling horizontal di mobile */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ==========================================================================
+   2. Base Table Styles
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-variant-numeric: tabular-nums; /* Angka sejajar sempurna */
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   3. Table Header (THEAD)
+   ========================================================================== */
+thead {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    padding: 1.25rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+}
+
+/* Penyesuaian alignment kolom kiri */
+th:nth-child(1), 
+th:nth-child(2) {
+    text-align: left;
+    padding-left: 1.5rem;
+}
+
+/* ==========================================================================
+   4. Table Body & Rows (TBODY)
+   ========================================================================== */
+tbody tr {
+    border-bottom: 1px solid var(--border-color-light);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Hover Effect pada baris tabel */
+tbody tr:hover {
+    background-color: var(--bg-surface-hover);
+    cursor: default;
+}
+
+td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color var(--transition-normal);
+}
+
+/* Alignment sel kiri */
+td:nth-child(1), 
+td:nth-child(2) {
+    text-align: left;
+    padding-left: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   5. Warna Khusus Kolom Waktu Sholat (Menyesuaikan Legend)
+   ========================================================================== */
+/* Menggunakan variabel warna dari main.css agar sinkron dengan theme */
+td:nth-child(3) { color: var(--color-imsak); font-weight: 600; }
+td:nth-child(4) { color: var(--color-subuh); }
+td:nth-child(5) { color: var(--color-terbit); }
+td:nth-child(6) { color: var(--color-duha); }
+td:nth-child(7) { color: var(--color-zuhur); }
+td:nth-child(8) { color: var(--color-asar); }
+td:nth-child(9) { color: var(--color-maghrib); font-weight: 600; } /* Maghrib di-bold karena waktu buka puasa */
+td:nth-child(10) { color: var(--color-isya); }
+
+/* ==========================================================================
+   6. Highlight Hari Ini (Today's Row)
+   ========================================================================== */
+.row-today {
+    background-color: rgba(255, 255, 255, 0.03); /* Sedikit lebih terang dari baris lain */
+    position: relative;
+    box-shadow: inset 0 0 0 1px var(--border-color-light); /* Subtle inner border */
+}
+
+/* Highlight angka tanggal (bulatan seperti di referensi) */
+.row-today td:nth-child(1) {
+    position: relative;
+}
+
+.row-today .day-number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: var(--accent-color);
+    color: #000; /* Contrast warna hitam agar teks terbaca di background terang */
+    border-radius: 50%;
+    font-weight: 700;
+    box-shadow: var(--shadow-glow);
+}
+
+/* Text baris hari ini lebih terang */
+.row-today td {
+    color: #fff; 
+}
+
+/* ==========================================================================
+   7. Loading State
+   ========================================================================== */
+.loading-state {
+    padding: 3rem !important;
+    text-align: center !important;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 1px;
+}
